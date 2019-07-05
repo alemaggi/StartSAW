@@ -1,0 +1,20 @@
+hr { 
+    display: block;
+    color: black;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+  }
+
+#Titolo{
+    font-size: 22px;
+}
+
+@media only screen and (max-width: 600px) {
+    #Testo{
+        margin-top: 20px;
+    }
+  }

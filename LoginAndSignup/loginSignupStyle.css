@@ -1,0 +1,110 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+.row {
+    margin-top: 15%;
+}
+
+.col-sm-6 {
+    height: 400px;
+}
+
+.loginCard {
+    height: 100%;
+    padding: 30px;
+}
+
+.signupCard {
+    height: 100%;
+    padding: 30px;
+    border-right: 7px;
+    border-right-style: solid;
+    border-color: #007bff;
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+    font-size: 44px;
+    font-family:  Tahoma, Verdana, Segoe, sans-serif;
+    font-weight: bolder;
+}
+
+p {
+    margin-top: 30px;
+    font-size: 18px;
+    font-family:  Tahoma, Verdana, Segoe, sans-serif;
+    font-weight: medium;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+#loginBtn {
+    color: white;
+}
+#signupBtn {
+    color: #007bff;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+    padding: 8px;
+}
+
+.btnSignup {
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: white;
+    color:  #007bff;
+    border: 2px solid #007bff;
+    margin-top: 10%;
+}
+
+.btnRegister {
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #007bff;
+    color:  white;
+    margin-top: 10%;
+    border: none;
+}
+
+/*Meida query*/
+@media only screen and (min-width: 421px) and (max-width: 600px) {
+    .signupCard {
+        height: 100%;
+        padding: 30px;
+        border-right: 0px;
+        border-bottom: 7px;
+        border-bottom-style: solid;
+        border-color: #007bff;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .signupCard {
+        height: 100%;
+        padding: 30px;
+        border-right: 0px;
+        border-bottom: 7px;
+        border-bottom-style: solid;
+        border-color: #007bff;
+    }
+    p{
+        font-size: 14px;
+    }
+    h1{
+        font-size: 22px;
+    }
+}

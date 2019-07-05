@@ -1,0 +1,24 @@
+html { 
+    background: url(./../Img/iu.gif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1{
+    color: white;
+    width: 550px;
+    margin-left: calc(50% - 275px);
+}
+
+@media screen and (max-width: 799px) {
+    html { 
+        background: url(./../Img/iuMobile.png) no-repeat center center fixed; 
+        background-size: contain;
+    }
+
+    h1{
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,35 @@
+TODO:
+- Controllare e pulire tutti i dati inseriti dall' utente
+- Controllare che non ci siano duplicati quando si cambaino le info utente
+- Aggiungere i commenti al blog
+- Fare una schermata di errore per situazioni come Invalid login credential
+- Controllare di aver chiuso tutte le sessioni
+- Fare un template per le parti comuni come navbar e footer
+- Fare un file unico di connesione al database
+- Controllare che tutto sia responsive
+- Aggiungere a edit profile il cambio della password oltre che di mail e nome utente
+- In signup e login bisogna mostrare se ci sono errori facendo una variabile
+  di sessione e mostrandola:
+    $_SESSION['errors'] = array("Your username or password was incorrect.");
+    header("Location:loginform.php");
+
+  e poi in login:
+    <?php if (isset($_SESSION['errors'])): ?>
+        <div class="form-errors">
+            <?php foreach($_SESSION['errors'] as $error): ?>
+                <p><?php echo $error ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+
+DOING:
+- Usare i prepared statement dove servono
+    --> authen_login funziona
+    --> authen_signup funziona
+    --> edit.php funziona    
+    --> in userProfile.php credo non servano
+    --> autenCheckout.php funziona
+    --> Blog/search.php credo non servano
+
+DONE:

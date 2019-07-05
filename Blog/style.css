@@ -1,0 +1,38 @@
+.recent {
+    border-block-end-style: solid;
+    border-block-end-color: lightskyblue; 
+}
+
+.des {
+    font-size: 95%;
+}
+body {
+    background-color: rgb(9, 165, 212);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 145%;
+    background-image: linear-gradient(#0062e6, #33aeff);
+}
+
+h1 {
+    font-size: 175%;
+}
+
+a {
+    color: rgb(57, 55, 58);
+}
+
+a:hover{
+    text-decoration: none;
+    color: #0062e6;
+}
+
+.panel {
+    display: flow-root;
+    margin: 25px;
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .recent { display: none; }  
+}
