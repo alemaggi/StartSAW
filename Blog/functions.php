@@ -60,21 +60,24 @@
         $x = 1;
         if ($result2->num_rows > 0) { 
             while($x <= $result2->num_rows) {
-            $row2 = $result2->fetch_assoc();
-            $title2 = $row2["title"];
-            $des = $row2["description"];
-            echo '<div class="row">' . '<div class="col-md-6">'; 
-            echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
-            echo '</div>';
-            $x++;
-            if ($x <= $result2->num_rows) {
                 $row2 = $result2->fetch_assoc();
-                echo '<div class="col-md-6">'; 
+                $title2 = $row2["title"];
+                $des = $row2["description"];
+                echo '<div class="row">' . '<div class="col-md-6">'; 
                 echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
-                echo '</div>'. '</div>';
+                echo '</div>';
                 $x++;
-            }
+
+                if ($x <= $result2->num_rows) {
+                    $row2 = $result2->fetch_assoc();
+                    $title2 = $row2["title"];
+                    $des = $row2["description"];
+                    echo '<div class="col-md-6">'; 
+                    echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
+                    echo '</div>'. '</div>';
+                    $x++;
+                }
             }
         }
-        }
+    }
 ?>

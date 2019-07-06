@@ -42,13 +42,13 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
     //name validation
     if (empty($name)) {
         $error = true;
-        array_push($errors, "Please enter your full name."); //da usare
+        array_push($errors, "Please enter your full name. "); //da usare
     }
 
     //email validation
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $error = true;
-        array_push($errors, "Please enter valid email address."); //da usare
+        array_push($errors, "Please enter valid email address. "); //da usare
     }
     else {
         // check email exist or not
@@ -62,21 +62,21 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
 
         if ($query->num_rows > 0){
             echo "Errore, Email gia utilizzata";
-            $emailError = "Provided email is already in use.";
+            $emailError = "Provided email is already in use. ";
         }
     }
     // pass validation
     if (empty($pass)){
         $error = true;
-        array_push($errors,"Please enter pass."); //da usare
+        array_push($errors,"Please enter pass. ");
     } 
     else if(strlen($pass) < 6) {
         $error = true;
-        array_push($errors,"pass must have atleast 6 characters.");  //da usare
+        array_push($errors,"pass must have atleast 6 characters. ");
     }
     else if ($pass != $passVal){
         $error = true;
-        array_push($errors,"le due PW non coincidono"); //mettere qualcosa di sensato e non un echo
+        array_push($errors,"le due PW non coincidono. ");
     }
     
     //pass encryption with SHA256();
@@ -84,12 +84,6 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
     
     //If all fields are right
     if ($error != true) {
-        /*
-        $query = "INSERT INTO users (userName, userEmail, userPass) VALUES('$name', '$email', '$pass')";
-        mysqli_query($connection, $query);
-        $_SESSION['name'] = $name;
-        header("Location: ./../Login/login.php");
-        */
         //Test prepared statement
         $query = $connection->prepare("INSERT INTO users (userName, userEmail, userPass) VALUES(?, ?, ?)");
         if (!$query){
@@ -100,13 +94,16 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
         $query->execute();
         
         $_SESSION['name'] = $name;
-        header("Location: ./../Login/login.php");
-        echo "Successo";
-    
+        header("Location: ./../Login/login.php");    
     }
     else {
-        //header("Location: signup.php "); //Da cambiare
-        echo "PD!! Qualcosa è andato storto";
+        array_push($errors,"Qualcosa è andato storto. Riprovare ");
+    }
+    //display degli errori
+    if (!empty($errors)) {
+        foreach ($errors as $item){
+            echo $item;
+        }
     }
 }
 ?>

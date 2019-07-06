@@ -22,8 +22,6 @@ if (isset($_POST['email']) and isset($_POST['pass'])){
     if(empty($password)) { 
         array_push($errors, "La password e' obbligatoria"); 
     }
-    //Session var con gli errori
-    $_SESSION['errors-log'] = $errors;
 
     //Check for records in the table
     $query = $connection->prepare("SELECT * FROM users WHERE userEmail = ? AND userPass = ?");
@@ -42,10 +40,13 @@ if (isset($_POST['email']) and isset($_POST['pass'])){
         header("Location: ./../UserProfile/userProfile.php");
     }
     else{
-        //echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
-        echo "Invalid Login Credentials";
+        array_push($errors, "Credienziali sbagliate"); 
     }
-
-    $_SESSION['errors-log'] = $errors;
+    //display degli errori
+    if (!empty($errors)) {
+        foreach ($errors as $item){
+            echo $item . ". ";
+        }
+    }
 }
 ?>

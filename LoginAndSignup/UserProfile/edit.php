@@ -40,41 +40,42 @@ $errors = array();
 //name validation
 if (empty($name)) {
     $error = true;
-    $nameError = "Please enter your full name."; //da usare
+    array_push($errors,"Please enter your full name. ");
 }
 
 //email validation
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
     $error = true;
-    $emailError = "Please enter valid email address."; //da usare
+    array_push($errors,"Please enter valid email address. ");
 }
 else {
     // check email exist or not and password
-    $query = $connection->prepare("SELECT * FROM users WHERE userEmail=? AND userPass = ? ");
-    if (!$query){
-        echo "Prepared failed";
-    }
-    $query->bind_param('ss',$email, $pass) or die("Binding failed");
-    $result = $query->execute();
-    $query->store_result();
-
-    if ($query->num_rows > 0){
+    if ($oldEmail == $email){
         $error = true;
-        $emailError = "Provided email or password is already in use.";  //da usare            
+        array_push($errors,"Provided email or password is already in use. ");     
     }
 }
 
 if(strlen($pass) < 6) {
     $error = true;
-    array_push($errors,"pass must have atleast 6 characters.");  //da usare
+    array_push($errors,"pass must have atleast 6 characters. ");
 }
-else if ($pass != $passVal){
+if ($pass != $passVal){
     $error = true;
-    array_push($errors,"le due PW non coincidono"); //mettere qualcosa di sensato e non un echo
+    array_push($errors,"le due PW non coincidono. ");
 }
 
 //pass encryption
 $passEncrypted = hash('sha256', $pass);
+
+//controllo che la nuova password sia diversa da quella vecchia
+//NON FUNZIONA
+$query= mysqli_query($connection ,"SELECT * FROM users WHERE userEmail = '$oldEmail' ") or die(mysql_error());
+$arr = mysqli_fetch_array($query);
+if($arr['userPass'] == $passEncrypted) {
+    $error = true;
+    array_push($errors,"La nuova password non può coincidere con la vecchia. ");
+}
 
 //If all fields are right
     if ($error != 1) {
@@ -83,6 +84,12 @@ $passEncrypted = hash('sha256', $pass);
         $_SESSION["email"] = $email; 
         $_SESSION["loggedIn"] = true;
         header("Location: userProfile.php");
+    }
+    //display degli errori
+    if (!empty($errors)) {
+        foreach ($errors as $item){
+            echo $item;
+        }
     }
 }
 ?>
