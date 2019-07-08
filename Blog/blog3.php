@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <?php include("./../Template/navbar.html"); ?>
+        <?php include("./../Template/navbar.php"); ?>
         <div class="panel">
             <div style="display: flow-root; padding: 35px;">
                 <div style="display: flex;">

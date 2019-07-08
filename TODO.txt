@@ -1,23 +1,22 @@
 TODO:
-- Controllare di aver chiuso tutte le sessioni
-- Fare un template per le parti comuni come navbar e footer
-- Fare un file unico di connesione al database
 - Controllare che tutto sia responsive
 
 DOING:
     - Controllare che non ci siano duplicati quando si cambaino le info utente
         --> manca controllare che la nuova pw!=da old pw in edit.php
+    - Controllare di aver chiuso tutte le sessioni
+    - Fare un template per le parti comuni come navbar e footer
 
 DONE:
+    - Usare i prepared statement dove servono
+        --> authen_login funziona
+        --> authen_signup funziona
+        --> edit.php funziona    
+        --> in userProfile.php credo non servano
+        --> autenCheckout.php funziona
+        --> Blog/search.php credo non servano
 
-- Usare i prepared statement dove servono
-    --> authen_login funziona
-    --> authen_signup funziona
-    --> edit.php funziona    
-    --> in userProfile.php credo non servano
-    --> autenCheckout.php funziona
-    --> Blog/search.php credo non servano
-
-- Controllare e pulire tutti i dati inseriti dall' utente
-- Fare una schermata di errore per situazioni come Invalid login credential
-- Aggiungere a edit profile il cambio della password oltre che di mail e nome utente
+    - Controllare e pulire tutti i dati inseriti dall' utente
+    - Fare una schermata di errore per situazioni come Invalid login credential
+    - Aggiungere a edit profile il cambio della password oltre che di mail e nome utente
+    - Fare un file unico di connesione al database

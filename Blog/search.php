@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-    $link = mysqli_connect('localhost', 'root', '', 'StartSawDB');
+    include "./../connect.php";
 
     $query = $_GET['query']; 
     // gets value sent over search form
@@ -17,10 +17,10 @@ session_start();
     $query = htmlspecialchars($query); 
     // changes characters used in html to their equivalents, for example: < to &gt;
         
-    $query = mysqli_real_escape_string($link, $query);
+    $query = mysqli_real_escape_string($conn, $query);
     // makes sure nobody uses SQL injection
         
-    $raw_results = mysqli_query($link, "SELECT * FROM articolo
+    $raw_results = mysqli_query($conn, "SELECT * FROM articolo
     WHERE (`title` LIKE '%".$query."%') OR (`text` LIKE '%".$query."%')") or die(mysql_error());
             
     // * means that it selects all fields, you can also write: `id`, `title`, `text`

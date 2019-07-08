@@ -1,12 +1,12 @@
 <?php
-require_once('./../db_connect.php');
+require_once('./../../connect.php');
 
 session_start();
 $email = $_SESSION["email"];
 
 // CHECK FOR THE RECORD FROM TABLE
 $query = "SELECT * FROM `users` WHERE userEmail='$email'";
-$result = mysqli_query($connection, $query);
+$result = mysqli_query($conn, $query);
 
 while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
 $name=$row['userName'];
@@ -41,7 +41,9 @@ $email=$row['userEmail'];
       <br>
       </p>
       <button><a href="editProfile.php">Edit profile</a></button>
+      <br id="btnSeparator">
       <button><a href="./../Logout/logout.php">Logout</a></button>
+      <br id="btnSeparator">
       <button><a href="./../../index.php">Go to home page</a></button>
     </div>
   </div>

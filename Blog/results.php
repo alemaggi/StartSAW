@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,7 +12,7 @@ session_start();
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resultsStyle.css">
 
-    <?php include("./../Template/navbar.html"); ?> 
+    <?php include("./../Template/navbar.php"); ?> 
 
     <div class="container">
         <?php

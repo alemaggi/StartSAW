@@ -1,7 +1,7 @@
 <?php
     
     function get_recent() {
-        include "connection.php";
+        include "./../connect.php";
         $query = "SELECT title, description FROM articolo";
         $result = $conn->query($query);
         $x = 1;
@@ -17,7 +17,7 @@
     }
 
     function get_most_viewed(){
-        include "connection.php";
+        include "./../connect.php";
         $query = "SELECT title, description, views, id FROM articolo ORDER BY views DESC";
         $result = $conn->query($query);
         $x = 1;
@@ -35,7 +35,7 @@
 
 
     function get_article() {
-        include "connection.php";
+        include "./../connect.php";
         if (!empty( $_COOKIE['id'] ) ) {
             $id = $_COOKIE['id'];
             $query2 = "SELECT title, text, picture FROM articolo WHERE id=$id";
@@ -54,7 +54,7 @@
     }   
 
     function get_all_article() {
-        include "connection.php";
+        include "./../connect.php";
         $query2 = "SELECT title, description, picture FROM articolo";
         $result2 = $conn->query($query2);
         $x = 1;

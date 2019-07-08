@@ -1,6 +1,6 @@
 <?php
 
-require('./../db_connect.php');
+require('./../../connect.php');
 session_start();
 $oldEmail = $_SESSION["email"];
 $error = 0;
@@ -70,7 +70,7 @@ $passEncrypted = hash('sha256', $pass);
 
 //controllo che la nuova password sia diversa da quella vecchia
 //NON FUNZIONA
-$query= mysqli_query($connection ,"SELECT * FROM users WHERE userEmail = '$oldEmail' ") or die(mysql_error());
+$query= mysqli_query($conn ,"SELECT * FROM users WHERE userEmail = '$oldEmail' ") or die(mysql_error());
 $arr = mysqli_fetch_array($query);
 if($arr['userPass'] == $passEncrypted) {
     $error = true;
@@ -80,7 +80,7 @@ if($arr['userPass'] == $passEncrypted) {
 //If all fields are right
     if ($error != 1) {
         $query = "UPDATE users SET userName = '$name', userEmail = '$email', userPass = '$passEncrypted' WHERE userEmail = '$oldEmail'";
-        mysqli_query($connection, $query);
+        mysqli_query($conn, $query);
         $_SESSION["email"] = $email; 
         $_SESSION["loggedIn"] = true;
         header("Location: userProfile.php");

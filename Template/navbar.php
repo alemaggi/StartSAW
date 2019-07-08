@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,17 +35,34 @@
             <li class="nav-item">
                 <a class="nav-link" href="./../Blog/blog.php">BLOG</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./../LoginAndSignup/loginSingupIndex.html">SIGN IN/LOGIN</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item" id="loginSignupBtn">
                 <?php 
+                //Se l'utente è gia loggato non faccio vedere nella navbar il bottone LOGIN/SIGNUP
                 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
-                    <a href="./../LoginAndSignup/Login/userProfile.php" class="nav-link">PROFILE</a>
+                    <script type='text/javascript'>
+                        $(document).ready(function(){
+                            document.getElementById("loginSignupBtn").style.display = "none";
+                        });
+                    </script>
                 <?php 
                 }
                 else { ?>
-                    <a href="./../LoginAndSignup/loginSingupIndex.html" class="nav-link">PROFILE</a>
+                    <a href="./../LoginAndSignup/loginSingupIndex.html" class="nav-link">SIGN IN/LOGIN</a>
+                <?php } ?>
+            </li>
+            <li class="nav-item" id="profileBtn">
+            <?php 
+            //Se l'utente non è loggato non faccio vedere nella navbar il bottone PROFILE
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
+                <a href="./../LoginAndSignup/UserProfile/userProfile.php" class="nav-link">PROFILE</a>
+                <?php 
+                }
+                else { ?>
+                    <script type='text/javascript'>
+                        $(document).ready(function(){
+                            document.getElementById("profileBtn").style.display = "none";
+                        });
+                    </script>
                 <?php } ?>
             </li>
             </ul>

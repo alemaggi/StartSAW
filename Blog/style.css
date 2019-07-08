@@ -1,32 +1,32 @@
-.recent {
+.recent{
     border-block-end-style: solid;
     border-block-end-color: lightskyblue; 
 }
 
-.des {
+.des{
     font-size: 95%;
 }
-body {
+body{
     background-color: rgb(9, 165, 212);
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 145%;
     background-image: linear-gradient(#0062e6, #33aeff);
 }
 
-h1 {
+h1{
     font-size: 175%;
 }
 
-a {
+a{
     color: rgb(57, 55, 58);
 }
 
 a:hover{
-    text-decoration: none;
     color: #0062e6;
+    text-decoration: none;
 }
 
-.panel {
+.panel{
     display: flow-root;
     margin: 25px;
     background-color: aliceblue;
@@ -34,5 +34,10 @@ a:hover{
 }
 
 @media screen and (max-width: 767px) {
-    .recent { display: none; }  
+    .recent{ 
+        display: none; 
+    }
+    #headerRemoveOnMobile{
+        display: none;
+    }
 }

@@ -2,13 +2,13 @@
 // Inialize session
 session_start();
 
-require('./../db_connect.php');
+require('./../../connect.php');
 
 if (isset($_POST['email']) and isset($_POST['pass'])){
 	
     // Assigning POST values to variables.
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $password = mysqli_real_escape_string($connection,$_POST['pass']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn,$_POST['pass']);
 
     //encryption
     $pass = hash('sha256', $password);
@@ -24,7 +24,7 @@ if (isset($_POST['email']) and isset($_POST['pass'])){
     }
 
     //Check for records in the table
-    $query = $connection->prepare("SELECT * FROM users WHERE userEmail = ? AND userPass = ?");
+    $query = $conn->prepare("SELECT * FROM users WHERE userEmail = ? AND userPass = ?");
     if (!$query){
         echo "Prepared failed";
     }

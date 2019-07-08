@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 
-require('./../db_connect.php');
+require('./../../connect.php');
 
 $error = false;
 
@@ -52,7 +52,7 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
     }
     else {
         // check email exist or not
-        $query = $connection->prepare("SELECT * FROM users WHERE userEmail = ?");
+        $query = $conn->prepare("SELECT * FROM users WHERE userEmail = ?");
         if (!$query){
             echo "Prepared failed";
         }
@@ -85,7 +85,7 @@ if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['pass'])){
     //If all fields are right
     if ($error != true) {
         //Test prepared statement
-        $query = $connection->prepare("INSERT INTO users (userName, userEmail, userPass) VALUES(?, ?, ?)");
+        $query = $conn->prepare("INSERT INTO users (userName, userEmail, userPass) VALUES(?, ?, ?)");
         if (!$query){
             echo "Prepared failed";
         }

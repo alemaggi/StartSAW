@@ -4,13 +4,13 @@
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./style.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <?php 
             function get_recent() {
-              include "connection.php";
+              include "./../connect.php";
               
               $query = "SELECT title, description FROM articolo";
               $result = $conn->query($query);
@@ -28,7 +28,7 @@
             }
 
             function get_most_viewed(){
-              include "connection.php";
+              include "./../connect.php";
               $query = "SELECT title, description, views, id FROM articolo ORDER BY views DESC";
               $result = $conn->query($query);
               $x = 1;
@@ -45,7 +45,7 @@
             }
 
             function get_article($x) {
-              include "connection.php";
+              include "./../connect.php";
               $i = $x;
               $query2 = "SELECT title, text, picture FROM articolo";
               $result2 = $conn->query($query2);
@@ -66,7 +66,7 @@
 
     <body>
       
-    <?php include("./../Template/navbar.html"); ?>
+    <?php include("./../Template/navbar.php"); ?>
 
         <div class="container-fluid;">
 
@@ -77,14 +77,14 @@
               </div>
 
               <div class="col-md-4" style="position: relative; word-break: inherit;">
-                <h1>Pi&ugrave; Recenti</h1>
+                <h1 id="headerRemoveOnMobile">Pi&ugrave; Recenti</h1>
                 <?php get_recent();?>
               </div>
             </div>
             
             <div class="row">
               <div class="col-md-3"style="word-break: inherit;">  
-              <h1>Pi&ugrave; Visti</h1>
+              <h1 id="headerRemoveOnMobile">Pi&ugrave; Visti</h1>
                 <?php get_most_viewed();?>
               </div>
 
