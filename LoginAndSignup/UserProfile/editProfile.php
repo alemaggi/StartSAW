@@ -44,7 +44,7 @@ $email = $_SESSION["email"];
             </div>
             <input type="submit" value="Submit" id="submitBtn">
             <span></span>
-            <button><a href="./userProfile.php">Go back to profile</a></button>
+            <a href="./userProfile.php" class="button1">Go back to profile</a>
         </form>
     </div>
     <!-- Optional JavaScript -->

@@ -40,11 +40,14 @@ $email=$row['userEmail'];
       Email: <?php echo $email ?>
       <br>
       </p>
-      <button><a href="editProfile.php">Edit profile</a></button>
+
+      <!--TEST-->
+      <a href="editProfile.php" class="button1">Edit profile</a>
       <br id="btnSeparator">
-      <button><a href="./../Logout/logout.php">Logout</a></button>
+      <a href="./../Logout/logout.php" class="button1">Logout</a>
       <br id="btnSeparator">
-      <button><a href="./../../index.php">Go to home page</a></button>
+      <a href="./../../index.php" class="button1">Go to home page</a>
+
     </div>
   </div>
 </div>

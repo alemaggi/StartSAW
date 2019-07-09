@@ -18,12 +18,12 @@ h1{
 }
 
 a{
-    color: rgb(57, 55, 58);
+    color: rgb(57, 55, 58)!important;
 }
 
 a:hover{
-    color: #0062e6;
-    text-decoration: none;
+    color: #0062e6!important;
+    text-decoration: none!important;
 }
 
 .panel{
