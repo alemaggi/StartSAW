@@ -4,11 +4,12 @@ require('./../../connect.php');
 session_start();
 $oldEmail = $_SESSION["email"];
 $error = 0;
-if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['passUno']) and isset($_POST['passDue'])){
+if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['passUno']) and isset($_POST['passDue']) and isset($_POST['oldPassword'])){
 
 // Assigning POST values to variables.
 $name = $_POST['name'];
 $email = $_POST['email'];
+$oldPassword =  $_POST['oldPassword']; //Questa è la vecchia password inserita dall' utente
 $pass = $_POST['passUno'];
 $passVal = $_POST['passDue'];
 
@@ -25,6 +26,10 @@ $email = htmlspecialchars($email);
 
 
 //pass clean up
+$oldPassword = trim($_POST['oldPassword']);
+$oldPassword = strip_tags($oldPassword);
+$oldPassword = htmlspecialchars($oldPassword);
+
 $pass = trim($_POST['passUno']);
 $pass = strip_tags($pass);
 $pass = htmlspecialchars($pass);
@@ -48,13 +53,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
     $error = true;
     array_push($errors,"Please enter valid email address. ");
 }
-else {
-    // check email exist or not and password
-    if ($oldEmail == $email){
-        $error = true;
-        array_push($errors,"Provided email or password is already in use. ");     
-    }
-}
 
 if(strlen($pass) < 6) {
     $error = true;
@@ -69,12 +67,16 @@ if ($pass != $passVal){
 $passEncrypted = hash('sha256', $pass);
 
 //controllo che la nuova password sia diversa da quella vecchia
-//NON FUNZIONA
 $query= mysqli_query($conn ,"SELECT * FROM users WHERE userEmail = '$oldEmail' ") or die(mysql_error());
 $arr = mysqli_fetch_array($query);
 if($arr['userPass'] == $passEncrypted) {
     $error = true;
     array_push($errors,"La nuova password non può coincidere con la vecchia. ");
+}
+//controllo che la vecchia password inserita dall' utente coincida realmente con quella in uso
+if ($arr['userPass'] != hash('sha256', $oldPassword)){
+    $error = true;
+    array_push($errors, "La vecchia password non è corretta");
 }
 
 //If all fields are right

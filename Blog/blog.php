@@ -99,7 +99,7 @@
               <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                  <?php get_article(3); ?>
+                  <?php get_article(4); ?>
                 </div>
               </div>
             </div>
@@ -117,6 +117,7 @@
             <div class="row">
               <div class="col-md-5"></div>
                 <div class="col-md-2">
+                  <br>
                   <a href="blog3.php"> <button type="button" class="btn btn-secondary" style="align: right;">Tutti gli articoli</button> </a>
                 </div>
             </div>
@@ -128,8 +129,8 @@
               document.cookie = "id="+id_topass;
             } 
           </script>
-
-        
+      </div>
+    <?php include("./../Template/footer.php"); ?>
 
     </body>
 

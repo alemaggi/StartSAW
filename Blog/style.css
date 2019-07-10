@@ -1,42 +1,60 @@
-.recent{
+.recent {
     border-block-end-style: solid;
     border-block-end-color: lightskyblue; 
 }
 
-.des{
+.des {
     font-size: 95%;
 }
-body{
+body {
     background-color: rgb(9, 165, 212);
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 145%;
     background-image: linear-gradient(#0062e6, #33aeff);
 }
 
-h1{
+h1 {
     font-size: 175%;
 }
 
-a{
-    color: rgb(57, 55, 58)!important;
+a {
+    color: rgb(57, 55, 58);
 }
 
 a:hover{
-    color: #0062e6!important;
-    text-decoration: none!important;
+    text-decoration: none;
+    color: #0062e6;
 }
 
-.panel{
+.comment-container {
+    border-block-end-style: solid;
+    border-block-start-style: solid;
+    border-color: dimgrey;
+    padding: 10px;
+    
+
+}
+
+.panel {
     display: flow-root;
     margin: 25px;
     background-color: aliceblue;
     padding: 20px;
 }
 
+.commento {
+    margin-top: 5px;
+    resize: none;
+    border-block-end-style: solid;
+    border-block-end-color: #0062e6;
+    border-block-start-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+
 @media screen and (max-width: 767px) {
-    .recent{ 
-        display: none; 
-    }
+    .recent { display: none; }
+
     #headerRemoveOnMobile{
         display: none;
     }

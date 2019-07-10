@@ -10,6 +10,7 @@
 
     <body>
         <?php include("./../Template/navbar.php"); ?>
+    <div>
         <div class="panel">
             <div style="display: flow-root; padding: 35px;">
                 <div style="display: flex;">
@@ -19,6 +20,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <?php include("./../Template/footer.php"); ?>
 
         <script type="text/javascript">
             function get_id(clicked_id){
@@ -26,6 +29,9 @@
               document.cookie = "id="+id_topass;
             } 
         </script>
+
+
+
     </body>
 
 </html>

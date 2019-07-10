@@ -28,23 +28,21 @@ if (isset($_POST['email']) and isset($_POST['quantity']) and isset($_POST['credi
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     $count = mysqli_num_rows($result);
 
+    //Array di errrori
+    $errors = array();
+
     if ($count != 1){
         //stampare un errore che l'utente non è nel db
         $error = true;
+        array_push($errors, "L' utente non è nel DB'"); 
     }
 
     if ($nome != $email){
         //stampare che l'utente è sbagliato
         $error = true;
+        array_push($errors, "L' utente è sbagliato'"); 
     }
 
-    //qui sotto poi non ci va 20000 ma ci va i soldi che mancano alla fine della barra (quindi meno di 200000 tranne all' iniziio)
-    //if ($quantity > 200000){
-        //dire che non si puo comprare piu di quello che c'è
-      //  $error = true;
-    //}
-
-    //fare dei controlli piu belli
     if (empty($nome)){
         $error = true;
     }
@@ -57,9 +55,16 @@ if (isset($_POST['email']) and isset($_POST['quantity']) and isset($_POST['credi
     //controllare la lunghezza del numero della carta di credito
     if (empty($expire)){
         $error = true;
+        array_push($errors, "Formato carta di credito sbagliato"); 
     }
     if (empty($ccv)){
         $error = true;
+        array_push($errors, "Il CVV obbligatoria"); 
+    }
+
+    if ($quantity > $_SESSION["sommaToken"]){
+        $error = true;
+        array_push($errors, "Non si posso acquistare più token di quelli disponibili"); 
     }
 
     if ($error == false) {
@@ -72,9 +77,11 @@ if (isset($_POST['email']) and isset($_POST['quantity']) and isset($_POST['credi
         header("location: ./../index.php#TIMEMAP");
     }
 
-    //poi ci va qualcosa qui
-    else {
-        echo "Errore";
+    //display degli errori
+    if (!empty($errors)) {
+        foreach ($errors as $item){
+            echo $item . ". ";
+        }
     }
 }
 ?>

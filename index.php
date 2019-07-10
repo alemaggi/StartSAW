@@ -182,7 +182,7 @@
             while($row = $result->fetch_assoc()) {
                 $x = $x + $row["quantity"];
             }
-
+            $_SESSION["sommaToken"] = $x;
             if ($x >= $cap) $val = 100;
             else {
                 $val = (100 * $x) / $cap;

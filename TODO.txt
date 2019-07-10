@@ -2,9 +2,6 @@ TODO:
 - Controllare che tutto sia responsive
 
 DOING:
-    - Controllare che non ci siano duplicati quando si cambaino le info utente
-        --> manca controllare che la nuova pw!=da old pw in edit.php
-    - Controllare di aver chiuso tutte le sessioni
     - Fare un template per le parti comuni come navbar e footer
 
 DONE:
@@ -20,3 +17,5 @@ DONE:
     - Fare una schermata di errore per situazioni come Invalid login credential
     - Aggiungere a edit profile il cambio della password oltre che di mail e nome utente
     - Fare un file unico di connesione al database
+    - Controllare che non ci siano duplicati quando si cambaino le info utente
+    - Controllare di aver chiuso tutte le sessioni
