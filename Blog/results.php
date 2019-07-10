@@ -19,7 +19,10 @@
         foreach ($_SESSION['risultati'] as $item) { 
         ?>
         <div id="Titolo">
-          <?php echo $item['title']; ?>
+          <?php 
+            $IDArticle = $item['id'];
+            echo "<a href='blog2.php' id= $IDArticle  onclick='get_id(this.id)' style='font-size: 22px;'>". $item['title'] . '</a>';
+          ?>
         </div>
         <br>
         <div class="row">
@@ -39,6 +42,12 @@
   <?php include("./../Template/footer.php"); ?>
 
     <!-- Optional JavaScript -->
+    <script type="text/javascript">
+      function get_id(clicked_id){
+        var id_topass = clicked_id;
+        document.cookie = "id="+id_topass;
+      } 
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

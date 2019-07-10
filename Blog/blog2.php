@@ -51,29 +51,29 @@
                     </div>
 
                         
-                        <div style="border-block-end-style: solid;">
-                            <div class="row">
-                                <div class="col-md-9">
-                                <?php
-                                    $name = " ";
-                                    if (isset($_SESSION["email"])) {
-                                        $name = $_SESSION["email"];
-                                    }
-                                    else {
-                                        $name = "Anonymous";
-                                    }
-                                    echo "<form method='POST' action='".add_comment()."'>
-                                        <input type='hidden' name='idUser' value= ".$name." >
-                                        <input type='hidden' name='date' value='".date('Y-m-d')."'>
-                                        <textarea id='TextArea' class='commento' rows=5 name='comment' style='background: transparent; color: black; width: 100%; '></textarea><br>
-                                        <button type='submit' name='addComment' onchange='showComment()' class='btn btn-secondary' style='margin-block-end: 5px; margin-top: 5px;'>Add Comment</button>
-                                    </form> ";
-                                ?>
+                    <div style="border-block-end-style: solid;">
+                        <div class="row">
+                            <div class="col-md-9">
+                            <?php
+                                $name = " ";
+                                if (isset($_SESSION["email"])) {
+                                    $name = $_SESSION["email"];
+                                }
+                                else {
+                                    $name = "Anonymous";
+                                }
+                                echo "<form method='POST' action='".add_comment()."'>
+                                    <input type='hidden' name='idUser' value= ".$name." >
+                                    <input type='hidden' name='date' value='".date('Y-m-d')."'>
+                                    <textarea id='TextArea' class='commento' rows=5 name='comment' style='background: transparent; color: black; width: 100%; '></textarea><br>
+                                    <button type='submit' name='addComment' onchange='showComment()' class='btn btn-secondary' style='margin-block-end: 5px; margin-top: 5px;'>Add Comment</button>
+                                </form> ";
+                            ?>
 
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="row">

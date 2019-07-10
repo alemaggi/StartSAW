@@ -2,7 +2,7 @@
 
     function add_comment() {
         include "./../connect.php";
-        if (isset($_POST['addComment'])) {
+        if (isset($_POST['addComment']) and ($_POST['comment'])) {
             $uid = $_POST['idUser'];
             $date = $_POST['date'];
             $comment = $_POST['comment'];
@@ -28,8 +28,7 @@
             echo "Il tuo commento &egrave; stato aggiunto";
 
             echo '<button name="addComment" class="btn btn-secondary" onclick="reload()" style="margin-block-end: 5px; margin-left: 10px; margin-top: 5px;">Mostra il nuovo commento</button>';    
-        }
-        
+        }        
     }
 
     function show_comments() {
@@ -122,8 +121,10 @@
             $x++;
             if ($x <= $result2->num_rows) {
                 $row2 = $result2->fetch_assoc();
+                $title2New = $row2["title"];
+                $desNew = $row2["description"];
                 echo '<div class="col-md-6">'; 
-                echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
+                echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2New . "</a>" . "</h1>" . "<p>" . $desNew . "</p>";
                 echo '</div>'. '</div>';
                 $x++;
             }

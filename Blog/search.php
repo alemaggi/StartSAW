@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-    include "./../connect.php";
+include "./../connect.php";
 
-    $query = $_GET['query']; 
-    // gets value sent over search form
+$query = $_GET['query']; 
+// gets value sent over search form
+if (strlen($query) > 0) {
     
     if (strlen($query) < 1) {
         header('#'); 
@@ -41,4 +42,8 @@ session_start();
     else { // se non ci sono risultati
         header('Location: blog.php'); 
     }
+}
+else {
+    echo "Errore. Bisogna inserire qualcosa nella barra di ricerca";
+}
 ?>

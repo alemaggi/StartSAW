@@ -13,6 +13,14 @@ hr {
     font-size: 22px;
 }
 
+a{
+  color: rgb(57, 55, 58);
+}
+a:hover{
+  text-decoration: none!important;
+  color: #0062e6;
+}
+
 @media only screen and (max-width: 600px) {
     #Testo{
         margin-top: 20px;
