@@ -65,6 +65,21 @@
                     </script>
                 <?php } ?>
             </li>
+            <li class="nav-item" id="postOnBlog">
+            <?php 
+            //Se l'utente non è loggato non faccio vedere nella navbar il bottone per postare sul blog
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
+                <a href="./../Blog/blog4.html" class="nav-link">POST ON BLOG</a>
+            <?php 
+            }
+            else { ?>
+                <script type='text/javascript'>
+                    $(document).ready(function(){
+                        document.getElementById("postOnBlog").style.display = "none";
+                    });
+                </script>
+            <?php } ?>
+        </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="./../Blog/search.php" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">

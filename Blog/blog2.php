@@ -26,7 +26,7 @@
                 <div class="row">
 
                         <div class="col-md-3" style="position: relative; word-break: inherit;">
-                            <h1>Pi&ugrave; Recenti</h1>
+                            <h1 id="headerRemoveOnMobile">Pi&ugrave; Recenti</h1>
                             <?php get_recent();?>
                         </div>
 
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <h1>Pi&ugrave; Visti</h1>
+                            <h1 id="headerRemoveOnMobile">Pi&ugrave; Visti</h1>
                             <?php get_most_viewed(); ?>
                         </div>
                 </div>

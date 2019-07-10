@@ -47,16 +47,17 @@
             function get_article($x) {
               include "./../connect.php";
               $i = $x;
-              $query2 = "SELECT title, text, picture FROM articolo";
+              $query2 = "SELECT title, text, picture, id FROM articolo";
               $result2 = $conn->query($query2);
               if ($result2->num_rows > 0) { 
                 while($i > 0) {
                   $row2 = $result2->fetch_assoc();
                   $title2 = $row2["title"];
                   $text = $row2["text"];
+                  $id = $row2["id"];
                   $i--; 
                 }
-                  echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= "width:100%; border-block-end-style:solid;" >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . $text;
+                  echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= "width:100%; border-block-end-style:solid;" >' . "<h1>" . "<a href='blog2.php' id= $id  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . $text;
               }
               else echo "Si è verificato un problema!";
             }

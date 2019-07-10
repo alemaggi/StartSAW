@@ -1,10 +1,11 @@
 TODO:
-- Controllare che tutto sia responsive
 
 DOING:
-    - Fare un template per le parti comuni come navbar e footer
 
+ 
 DONE:
+    - Controllare che tutto sia responsive
+    - Fare un template per le parti comuni come navbar e footer
     - Usare i prepared statement dove servono
         --> authen_login funziona
         --> authen_signup funziona

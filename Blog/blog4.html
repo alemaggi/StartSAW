@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body class="body-upload">
+            <form method="post" action="upload.php" 
+            enctype="multipart/form-data">
+            <h2>Titolo</h2>
+            <input type="text" name="titolo">
+            <h2>Testo</h2>
+             <textarea type="text" name="testo" cols="80" rows="20"></textarea>
+            <h2>Descrizione</h2>
+             <textarea type="text" name="descrizione" cols="80" rows="20"></textarea>
+             <h2>Carica un immagine</h2>
+            <input type="file" name="img" size="100">   
+            <br /><br />
+            <input class="btnform" type="submit" value="invia al blog!">
+            </form>
+        </form>
+    </body>
+</html>

@@ -2,7 +2,8 @@
 
     function add_comment() {
         include "./../connect.php";
-        if (isset($_POST['addComment']) and ($_POST['comment'])) {
+
+        if (isset($_POST['addComment'])) {
             $uid = $_POST['idUser'];
             $date = $_POST['date'];
             $comment = $_POST['comment'];
@@ -18,6 +19,8 @@
             $comment = strip_tags($comment);
             $comment = htmlspecialchars($comment);
 
+            $error = "Devi scrivere qualcosa nel commento!";
+            if (strlen($comment) > 0){
             //$query = "INSERT INTO commenti (idUser, idArticle, text, date) VALUES ('$uid', '$id', '$comment', '$date')";
             $query = $conn->prepare("INSERT INTO commenti (userEmail, idArticle, text, date) VALUES(?, ?, ?, ?)");
             if (!$query){
@@ -28,7 +31,11 @@
             echo "Il tuo commento &egrave; stato aggiunto";
 
             echo '<button name="addComment" class="btn btn-secondary" onclick="reload()" style="margin-block-end: 5px; margin-left: 10px; margin-top: 5px;">Mostra il nuovo commento</button>';    
-        }        
+            }
+            else {
+                echo $error;
+            }
+        }
     }
 
     function show_comments() {
@@ -54,7 +61,7 @@
     
     function get_recent() {
         include "./../connect.php";
-        $query = "SELECT title, description FROM articolo";
+        $query = "SELECT title, description, id FROM articolo";
         $result = $conn->query($query);
         $x = 1;
         while($x<=5) {
@@ -62,7 +69,8 @@
                 $row = $result->fetch_assoc();
                 $title = $row["title"];
                 $des = $row["description"];
-                echo "<div class = recent>" . "<h2>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title . "</a>" . "</h2>" . $des . "</div>"; 
+                $id = $row["id"];
+                echo "<div class = recent>" . "<h2>" . "<a href='blog2.php' id= $id  onclick='get_id(this.id)'>". $title . "</a>" . "</h2>" . $des . "</div>"; 
                 $x++;
             }
         }
@@ -107,24 +115,26 @@
 
     function get_all_article() {
         include "./../connect.php";
-        $query2 = "SELECT title, description, picture FROM articolo";
+        $query2 = "SELECT title, description, picture, id FROM articolo";
         $result2 = $conn->query($query2);
         $x = 1;
         if ($result2->num_rows > 0) { 
             while($x <= $result2->num_rows) {
             $row2 = $result2->fetch_assoc();
             $title2 = $row2["title"];
+            $id = $row2["id"];
             $des = $row2["description"];
             echo '<div class="row">' . '<div class="col-md-6">'; 
-            echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
+            echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $id  onclick='get_id(this.id)'>". $title2 . "</a>" . "</h1>" . "<p>" . $des . "</p>";
             echo '</div>';
             $x++;
             if ($x <= $result2->num_rows) {
                 $row2 = $result2->fetch_assoc();
                 $title2New = $row2["title"];
                 $desNew = $row2["description"];
+                $id = $row2["id"];
                 echo '<div class="col-md-6">'; 
-                echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $x  onclick='get_id(this.id)'>". $title2New . "</a>" . "</h1>" . "<p>" . $desNew . "</p>";
+                echo '<img src="data:image/jpeg;base64, '.base64_encode( $row2['picture'] ).'" style= width:100% >' . "<h1>" . "<a href='blog2.php' id= $id  onclick='get_id(this.id)'>". $title2New . "</a>" . "</h1>" . "<p>" . $desNew . "</p>";
                 echo '</div>'. '</div>';
                 $x++;
             }
